@@ -73,6 +73,17 @@ class HelpDesign(
                 }
             }
 
+            category(R.string.contact)
+
+            clickable(
+                title = R.string.telegram,
+                summary = R.string.telegram_username
+            ) {
+                clicked {
+                    openLink(Uri.parse(context.getString(R.string.telegram_url)))
+                }
+            }
+
             tips(R.string.powered_by_03net)
         }
 
