@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="PluralsCandidate">
-    <string name="launch_name_meta">03NET</string>
-    <string name="launch_name_alpha">03NET Alpha</string>
-    <string name="application_name_meta">03NET VPN</string>
-    <string name="application_name_alpha">03NET VPN Alpha</string>
+    <string name="launch_name_meta">Clash 03NET</string>
+    <string name="launch_name_alpha">Clash 03NET Alpha</string>
+    <string name="application_name_meta">Clash 03NET</string>
+    <string name="application_name_alpha">Clash 03NET Alpha</string>
     <string name="powered_by_03net">Powered by 03NET</string>
+    <string name="contact">Contact</string>
+    <string name="telegram">Telegram</string>
+    <string name="telegram_username">@O3netwrt77</string>
+    <string name="telegram_url">https://t.me/O3netwrt77</string>
 
     <string name="stopped">Stopped</string>
     <string name="tap_to_start">Tap to start</string>
