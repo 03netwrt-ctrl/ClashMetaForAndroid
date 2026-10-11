@@ -72,6 +72,8 @@ class HelpDesign(
                     openLink(Uri.parse(context.getString(R.string.meta_github_url)))
                 }
             }
+
+            tips(R.string.powered_by_03net)
         }
 
         binding.content.addView(screen.root)
