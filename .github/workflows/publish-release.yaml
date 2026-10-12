@@ -1,0 +1,50 @@
+name: Publish APK Release
+
+# Membuat GitHub Release resmi berisi file APK, seperti repo-repo besar.
+# Cara pakai: Actions -> "Publish APK Release" -> Run workflow,
+# isi tag (mis. v1.0.0-03net) dan ID run "Build Debug" yang sukses.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag rilis (contoh: v1.0.0-03net)'
+        required: true
+        default: 'v1.0.0-03net'
+      run_id:
+        description: 'ID run "Build Debug" yang sukses (angka dari URL halaman Actions)'
+        required: true
+        default: '38178042347'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download APK artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: 'Clash 03NET APK*'
+          path: ./apks
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-multiple: true
+
+      - name: List APKs
+        run: ls -lh ./apks/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag }}
+          name: 'Clash 03NET ${{ inputs.tag }}'
+          body: |
+            APK resmi Clash 03NET — VPN bermerek 03NET.
+
+            Unduh file APK sesuai arsitektur HP kamu (kebanyakan HP Android: arm64-v8a), lalu install seperti biasa.
+
+            Powered by 03NET — Telegram: @O3netwrt77
+          files: ./apks/*.apk
